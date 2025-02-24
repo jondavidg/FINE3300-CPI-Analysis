@@ -63,9 +63,9 @@ row_label_max_avg_per_group = df_combined_part4.groupby(['Item'])['Absolute Aver
 #Store the specific rows from the dataframe corresponding with the labels selected above (use loc for label based indexing, since idxmax returns row labels)
 row_max_avg_per_group = df_combined_part4.loc[row_label_max_avg_per_group]
 #Iterate through each row (which contains the maximum absolute average change for a given category), printing the name of the category and the associated province
-print("Province with Highest Average Change by Category: ")
+print("Province with Highest Average Change (Absolute) by Category: ")
 for ind, rw in row_max_avg_per_group.iterrows():
-    print(f"Highest Average Change for {rw['Item']}: {rw['Jurisdiction']}")
+    print(f"Highest Average Change (Absolute) for {rw['Item']}: {rw['Jurisdiction']}")
 
 #PART 5
 
