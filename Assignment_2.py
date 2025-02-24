@@ -28,6 +28,10 @@ for jurisdiction in filepaths:
     df_unpivot = df.melt(id_vars=['Item'], var_name='Month', value_name='CPI')
     #Insert a new column called 'Jurisdiction' in the required position, storing the name of the selected jurisdiction as the value for all rows
     df_unpivot.insert(2, 'Jurisdiction', jurisdiction)
+    #Convert the Month column to a datetime object, specifying the format to use for parsing (year without century - abbreviated month name)
+    df_unpivot['Month'] = pd.to_datetime(df_unpivot['Month'], format = '%y-%b')
+    #Convert the Month column to the desired format using the strftime method (abbreviated month name - year without century)
+    df_unpivot['Month'] = df_unpivot['Month'].dt.strftime('%b-%y')
     #Append the formatted dataframe to the list created above
     jurisdictionset.append(df_unpivot)
 
